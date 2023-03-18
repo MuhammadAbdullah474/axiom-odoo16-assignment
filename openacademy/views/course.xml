@@ -1,0 +1,57 @@
+<odoo>
+    <!-- Define the main menu entry for OpenAcademy -->
+    <menuitem name="OpenAcademy" id="menu_openacademy" sequence="10"/>
+
+    <!--    <record id="view_openacademy_course_form" model="ir.ui.view">-->
+    <!--        <field name="name">openacademy.course.form</field>-->
+    <!--        <field name="model">openacademy.course</field>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <form>-->
+    <!--                <field name="title" />-->
+    <!--                <field name="description"/>-->
+    <!--            </form>-->
+    <!--        </field>-->
+    <!--    </record>-->
+    <record id="view_openacademy_course_tree" model="ir.ui.view">
+        <field name="name">openacademy.course.tree</field>
+        <field name="model">openacademy.course</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="title"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Define the action for displaying the list of all courses -->
+    <record id="action_openacademy_course_list" model="ir.actions.act_window">
+        <field name="name">Courses</field>
+        <field name="res_model">openacademy.course</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create a new course</p>
+        </field>
+    </record>
+
+    <!-- Define the menu entry to display the list of all courses -->
+    <menuitem name="Courses" id="menu_openacademy_course_list" parent="menu_openacademy_courses"
+              action="action_openacademy_course_list"/>
+
+    <!-- Define the action for creating/modifying a course -->
+    <record id="action_openacademy_course_form" model="ir.actions.act_window">
+        <field name="name">Course</field>
+        <field name="res_model">openacademy.course</field>
+        <field name="view_mode">form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create a new course</p>
+        </field>
+    </record>
+
+    <!-- Define the menu entry to create/modify a course -->
+    <menuitem name="Create Course" id="menu_openacademy_course_form" parent="menu_openacademy_courses"
+              action="action_openacademy_course_form"/>
+
+    <!-- Define the sub-menu entry for courses -->
+    <menuitem name="Courses" id="menu_openacademy_courses" action="action_openacademy_course_list"
+              parent="menu_openacademy" sequence="10"/>
+</odoo>
